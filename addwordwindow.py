@@ -9,6 +9,7 @@ class AddWordWindow:
         self.translator = Translator()
         
         self.new_window = Tk()
+        self.new_window.attributes('-topmost',True)
         self.new_window.iconbitmap("trans.ico")
         self.new_window.title("Add new word")
         self.new_window.geometry("600x300")

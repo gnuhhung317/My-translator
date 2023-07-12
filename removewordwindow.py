@@ -7,6 +7,7 @@ class RemoveWordWindow:
         self.translator = Translator()
         self.window = Tk()
         self.window.iconbitmap("trans.ico")
+        self.window.attributes('-topmost',True)
         self.window.title("Remove word")
         self.window.geometry("600x600")
         self.listbox = Listbox(self.window,width=30,font=("Arial",20))
