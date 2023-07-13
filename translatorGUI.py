@@ -2,7 +2,7 @@ from tkinter import *
 from translator import *
 from addwordwindow import AddWordWindow
 from removewordwindow import RemoveWordWindow
-
+from practicewindow import PraticeWindow
 class TranslatorGUI:
     def __init__(self) :
         self.new_window = None
@@ -42,7 +42,9 @@ class TranslatorGUI:
         #show all button
         self.show_all_button = Button(self.main_frame,text="Show all",command=self.show_all,width=20,height=2)
         self.show_all_button.grid(row=6,column=1,padx=10,pady=10)
-
+        #practice button
+        self.practice_button = Button(self.main_frame,text="Practice",command=self.practice,width=20,height=2)
+        self.practice_button.grid(row=7,column=1,padx=10,pady=10)
         #textbox
         self.textbox = Text()
         self.textbox.pack(padx=10,pady=10)
@@ -76,6 +78,8 @@ class TranslatorGUI:
     def show_all(self):
         self.textbox.delete("1.0",END)
         self.textbox.insert("1.0",self.translator.show_all())
+    def practice(self):
+        PraticeWindow()
 
 
 
