@@ -178,6 +178,7 @@
   ('optparse', 'C:\\Program Files\\Python310\\lib\\optparse.py', 'PYMODULE'),
   ('pickle', 'C:\\Program Files\\Python310\\lib\\pickle.py', 'PYMODULE'),
   ('pprint', 'C:\\Program Files\\Python310\\lib\\pprint.py', 'PYMODULE'),
+  ('practicewindow', 'D:\\Projects\\translator\\practicewindow.py', 'PYMODULE'),
   ('py_compile',
    'C:\\Program Files\\Python310\\lib\\py_compile.py',
    'PYMODULE'),
