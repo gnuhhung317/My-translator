@@ -163,4 +163,3 @@ class PraticeWindow:
             
         
         self.window.destroy()
-PraticeWindow()
