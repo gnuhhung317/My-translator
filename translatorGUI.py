@@ -18,10 +18,10 @@ class TranslatorGUI:
         self.example =""
         
         #UI
-        Label(self.win,text="DucHung translator for reading",font=("Arial",30)).pack()
+        Label(self.win,text="DucHung translator for reading",font=("Arial",30)).grid(row=0,column=0)
 
         self.main_frame = Frame(self.win)
-        self.main_frame.pack()
+        self.main_frame.grid(row=1,column=0)
         
         #show main frame
         Label(self.main_frame,text="English",font=("Arial",15)).grid(row=0,column=0,padx=10,pady=10)
@@ -47,7 +47,7 @@ class TranslatorGUI:
         self.practice_button.grid(row=7,column=1,padx=10,pady=10)
         #textbox
         self.textbox = Text()
-        self.textbox.pack(padx=10,pady=10)
+        self.textbox.grid(row=2,column=0,padx=10,pady=10)
         self.win.mainloop()
     def get_input_and_clear_ouput(self):
         self.english = self.e_entry.get().strip().lower()
@@ -79,7 +79,7 @@ class TranslatorGUI:
         self.textbox.delete("1.0",END)
         self.textbox.insert("1.0",self.translator.show_all())
     def practice(self):
-        PraticeWindow()
+        practice_window = PraticeWindow()
 
 
 

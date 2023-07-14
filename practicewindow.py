@@ -35,8 +35,9 @@ class PraticeWindow:
 
     def practice(self):
         #create widget to practice 
-
-        Label(text="PRACTICE",font=("Arial",24)).grid(row=0,column=1,padx=20,pady=20)
+    
+        label = Label(self.window,text="PRACTICE",font=("Arial",24))
+        label.grid(row=0,column=1,padx=20,pady=20)
         self.word_label = Label(self.window,text=f"{self.words[self.indice][0]}",font=("Arial",18))
         self.word_label.grid(row=1,column=1,padx=10,pady=10)
         self.word_entry = Entry(self.window,font=("Arial",20))
@@ -91,7 +92,8 @@ class PraticeWindow:
     def ask_quantity(self):
         # Ask how many world will be used for practice
         self.quantity_frame = Frame(self.window)
-        self.quantity_frame.pack()
+        self.quantity_frame.grid(row=0,column=0)
+
         self.quantity_label = Label(
             self.quantity_frame, text="Enter the words's number: ", font=("Arial", 14))
         self.quantity_label.grid(row=0, column=0, padx=10, pady=10)
@@ -99,7 +101,8 @@ class PraticeWindow:
         self.quantity_entry.grid(row=0, column=1, padx=10, pady=10)
         self.quantity_button = Button(
             self.window, text="Confirm", command=self.confirm)
-        self.quantity_button.pack()
+        self.quantity_button.grid(row=1,column=0)
+        
         self.quantity_entry.focus()
 
     def confirm(self):
@@ -160,4 +163,4 @@ class PraticeWindow:
             
         
         self.window.destroy()
-
+PraticeWindow()
