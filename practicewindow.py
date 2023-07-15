@@ -1,5 +1,5 @@
 from tkinter import *
-from translator import *
+from translator import Translator
 from tkinter import messagebox
 from random import sample
 
@@ -35,7 +35,7 @@ class PraticeWindow:
 
     def practice(self):
         #create widget to practice 
-    
+        self.window.bind("<Key>",self.click)
         label = Label(self.window,text="PRACTICE",font=("Arial",24))
         label.grid(row=0,column=1,padx=20,pady=20)
         self.word_label = Label(self.window,text=f"{self.words[self.indice][0]}",font=("Arial",18))
@@ -53,6 +53,14 @@ class PraticeWindow:
 
         self.index_label = Label(self.window,relief=SUNKEN,text=f"{self.indice+1} of {self.words_quantity}")
         self.index_label.grid(row=4,column=1,padx=10,pady=10)
+    def click(self,event):
+        #use keyboard for command
+        if event.keysym == "Left":
+            self.backward()
+        elif event.keysym == "Right":
+            self.forward()
+        elif event.keysym == "Return":
+            self.submit()
     def reload(self):
         #reload the word lable and the index when click backward and forward button
         self.word_entry.delete(0,END)
@@ -63,22 +71,28 @@ class PraticeWindow:
         self.index_label = Label(self.window,relief=SUNKEN,text=f"{self.indice+1} of {self.words_quantity}")
         self.index_label.grid(row=4,column=1,padx=10,pady=10)
     def backward(self):
-        
+        #turn to the before word
+        self.save_answer()
         if self.indice ==0:
             self.indice = self.words_quantity-1
         else:
             self.indice -=1
-        self.save_answer()
+        
         self.reload()
         
     def forward(self):
+        #turn to next word
+        self.save_answer()
         if self.indice == self.words_quantity-1:
             self.indice = 0
         else:
             self.indice +=1
-        self.save_answer()
+        
         self.reload()
+        
+
     def submit(self):
+        #complete practice
         self.save_answer()
         self.word_entry.grid_forget()
         self.word_label.destroy()
@@ -113,7 +127,8 @@ class PraticeWindow:
                 self.choose_words()
                 self.answer = ["None"]*self.words_quantity
                 for i in range(self.words_quantity):
-                    self.true_answer.append(IntVar())
+                    var = IntVar()
+                    self.true_answer.append(var)
                 self.quantity_frame.destroy()
                 self.quantity_button.destroy()
                 self.practice()
@@ -137,29 +152,19 @@ class PraticeWindow:
         Label(self.window,text="Word").grid(row=1,column=0)
         Label(self.window,text="Meaning").grid(row=1,column=1)
         Label(self.window,text="Your answer").grid(row=1,column=2)
-        Label(self.window,text="Correct").grid(row=1,column=3)
+        
         for row,word in enumerate(self.words):
             Label(self.window,text=f"{word[0]}").grid(row=row+2,column=0)
             Label(self.window,text=f"{word[1]}").grid(row=row+2,column=1)
         for row,word in enumerate(self.answer):
             Label(self.window,text=f"{word}").grid(row=row+2,column=2)
-            Checkbutton(self.window,text="True",variable=self.true_answer[row]).grid(row=row+2,column=3)
+        
+            
         for i in range(len(self.words)):
             self.window.grid_columnconfigure(i,weight=1)
             self.window.grid_rowconfigure(i,weight=1)
-        Button(self.window,text="Calculate point",command=self.calculater_point).grid(row=self.words_quantity+2,column=1,columnspan=2)
-    def calculater_point(self):
-        point = 0
-        for i in self.true_answer:
-            if(i.get() == 1) :
-                point+=1
-        message1 = f"You are {point}/{self.words_quantity} point. "
-        if (point>self.words_quantity*3/4):
-            message1+="Good done!"
-            messagebox.showinfo(title="Point",message=message1)
-        elif point<self.words_quantity/2:
-            message1+="You should learn more!"
-            messagebox.showerror(title="Point",message=message1)
-            
         
+        Button(self.window,text="Close",command=self.stop).grid(row=self.words_quantity+2,column=1,columnspan=2)
+    def stop(self):
         self.window.destroy()
+    

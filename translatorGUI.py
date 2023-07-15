@@ -90,4 +90,5 @@ class TranslatorGUI:
         
         
 UI = TranslatorGUI()
+
     
