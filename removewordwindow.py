@@ -10,9 +10,10 @@ class RemoveWordWindow:
         self.window.attributes('-topmost',True)
         self.window.title("Remove word")
         self.window.geometry("600x600")
+        self.window.config(bg = "LightBlue1")
         self.listbox = Listbox(self.window,width=30,font=("Arial",20))
         self.creat_listbox()
-        Button(self.window,text="Remove",command=self.remove_word).pack()
+        Button(self.window,text="Remove",command=self.remove_word,width=15,height=2).pack(padx=10,pady=10)
         self.window.mainloop()
     def to_string(self,word):
         return f"{word[0]}: {word[1]}.   {word[2]}"
@@ -32,6 +33,6 @@ class RemoveWordWindow:
     def creat_listbox(self):
         for word in self.translator.dictionary:
             self.listbox.insert(END,self.to_string(word))
-        self.listbox.pack()
+        self.listbox.pack(padx=10,pady=10)
 
 

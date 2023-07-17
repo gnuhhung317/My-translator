@@ -16,44 +16,49 @@ class TranslatorGUI:
         self.english = ""
         self.vietnamese = ""
         self.example =""
-        
+        self.win.config(bg="DodgerBlue1")
         #UI
-        Label(self.win,text="DucHung translator for reading",font=("Arial",30)).grid(row=0,column=0)
 
+        #make a title label
+        Label(self.win,text="DucHung translator for reading",font=("Arial",30),background="LightBlue1").grid(row=0,column=0,sticky=EW)
+
+        #make a frame
         self.main_frame = Frame(self.win)
         self.main_frame.grid(row=1,column=0)
-        
+        self.main_frame.config(bg="DodgerBlue1")
         #show main frame
-        Label(self.main_frame,text="English",font=("Arial",15)).grid(row=0,column=0,padx=10,pady=10)
-        Label(self.main_frame,text="Tiếng Việt",font=("Arial",15)).grid(row=0,column=2)
+        Label(self.main_frame,text="English",font=("Arial",15),background="LightSteelBlue3").grid(row=0,column=0,padx=10,pady=10)
+        Label(self.main_frame,text="Tiếng Việt",font=("Arial",15),background="LightSteelBlue3").grid(row=0,column=2)
         self.e_entry = Entry(self.main_frame,font = ("Arial",20),width=20)
         self.e_entry.grid(row=1,column=0,padx=10,pady=10)
         self.v_entry = Entry(self.main_frame,font = ("Arial",20),width=20)
         self.v_entry.grid(row=1, column=2,padx=10,pady=10)
         #translate button
-        self.translate_button = Button(self.main_frame,text="Translate",command=self.translate,width=20,height=2)
+        self.translate_button = Button(self.main_frame,text="Translate",command=self.translate,width=20,height=2,background="LightSteelBlue3")
         self.translate_button.grid(row=3,column=1,padx=10,pady=10)
         #add word button
-        self.add_word_button = Button(self.main_frame,text="Add word",command=self.add_word,width=20,height=2)
+        self.add_word_button = Button(self.main_frame,text="Add word",command=self.add_word,width=20,height=2,background="LightSteelBlue3")
         self.add_word_button.grid(row=4,column=1,padx=10,pady=10)
         #remove word button
-        self.remove_word_button = Button(self.main_frame,text="Remove word",command=self.remove_word,width=20,height=2)
+        self.remove_word_button = Button(self.main_frame,text="Remove word",command=self.remove_word,width=20,height=2,background="LightSteelBlue3")
         self.remove_word_button.grid(row=5,column=1,padx=10,pady=10)
         #show all button
-        self.show_all_button = Button(self.main_frame,text="Show all",command=self.show_all,width=20,height=2)
+        self.show_all_button = Button(self.main_frame,text="Show all",command=self.show_all,width=20,height=2,background="LightSteelBlue3")
         self.show_all_button.grid(row=6,column=1,padx=10,pady=10)
         #practice button
-        self.practice_button = Button(self.main_frame,text="Practice",command=self.practice,width=20,height=2)
+        self.practice_button = Button(self.main_frame,text="Practice",command=self.practice,width=20,height=2,background="LightSteelBlue3")
         self.practice_button.grid(row=7,column=1,padx=10,pady=10)
         #textbox
         self.textbox = Text()
         self.textbox.grid(row=2,column=0,padx=10,pady=10)
         self.win.mainloop()
     def get_input_and_clear_ouput(self):
+        #get the english field and clear the vietnamese field
         self.english = self.e_entry.get().strip().lower()
         self.v_entry.delete(0,'end')
         self.textbox.delete("1.0",END)
     def translate(self):
+        #translate english to vietnamese
         self.get_input_and_clear_ouput()
         check = 1
         if self.english.strip() == "":
@@ -70,15 +75,19 @@ class TranslatorGUI:
         
             
     def add_word(self):
+        #create a window to add words
         add_word_window =AddWordWindow()
         self.translator.load_dictionary()
     def remove_word(self):
+        #create a window to remove words
         remove_word_window = RemoveWordWindow()
         self.translator.load_dictionary()
     def show_all(self):
+        #insert all the dictionary to the bottom field
         self.textbox.delete("1.0",END)
         self.textbox.insert("1.0",self.translator.show_all())
     def practice(self):
+        #create a window for user's practicing
         practice_window = PraticeWindow()
 
 

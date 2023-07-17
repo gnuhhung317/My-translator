@@ -13,16 +13,18 @@ class AddWordWindow:
         self.new_window.iconbitmap("trans.ico")
         self.new_window.title("Add new word")
         self.new_window.geometry("600x300")
-        
+        self.new_window.config(bg = "LightBlue1")
+        #create a frame for input field
         new_frame = Frame(self.new_window)
-        new_frame.pack()
-        Label(new_frame,text="English: ",font=("Arial",15)).grid(row=0,column=0,padx=10,pady=10)
+        new_frame.config(bg = "LightBlue1")
+        new_frame.pack(padx=20,pady=20)
+        Label(new_frame,text="English: ",font=("Arial",15),background="LightSteelBlue2").grid(row=0,column=0,padx=10,pady=10)
         self.new_e_entry= Entry(new_frame,font=("Arial",15),width=20)
         self.new_e_entry.grid(row=0,column=1,padx=10,pady=10)
-        Label(new_frame,text="Vietnamese: ",font=("Arial",15)).grid(row=1,column=0,padx=10,pady=10)
+        Label(new_frame,text="Vietnamese: ",font=("Arial",15),background="LightSteelBlue2").grid(row=1,column=0,padx=10,pady=10)
         self.new_v_entry= Entry(new_frame,font=("Arial",15),width=20)
         self.new_v_entry.grid(row=1,column=1,padx=10,pady=10)
-        Label(new_frame,text="Example: ",font=("Arial",15)).grid(row=2,column=0,padx=10,pady=10)
+        Label(new_frame,text="Example: ",font=("Arial",15),background="LightSteelBlue2").grid(row=2,column=0,padx=10,pady=10)
         self.new_ex_entry = Entry(new_frame,font=("Aria;",15),width=20)
         self.new_ex_entry.grid(row=2,column=1,padx=10,pady=10)
         
