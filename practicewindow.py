@@ -169,5 +169,4 @@ class PraticeWindow:
         Button(self.window,text="Close",command=self.stop).grid(row=self.words_quantity+2,column=1)
     def stop(self):
         self.window.destroy()
-hi = PraticeWindow()
-    
+
