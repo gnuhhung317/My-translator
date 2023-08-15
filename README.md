@@ -5,7 +5,7 @@ This project provides a simple translator application that allows users to trans
 ## Installation
 
 1. Clone the repository to your local machine.
-2. Install the required dependencies by running `pip install -r requirements.txt` or run the .exe file in dist folder.
+2. Run the .exe file in dist folder.
 
 ## Usage
 
@@ -17,7 +17,7 @@ This project provides a simple translator application that allows users to trans
 
 ## Features
 
-- Translate English words or phrases to Vietnamese.
+- Translate English words or phrases to Vietnamese and their example.
 - Add new words to the dictionary.
 - Remove exist words from the dictionary.
 - View all words in the dictionary.
